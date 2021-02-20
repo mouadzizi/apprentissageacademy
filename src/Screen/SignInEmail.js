@@ -7,7 +7,7 @@ import * as Animatable from 'react-native-animatable';
 
 const heightScreen = Dimensions.get("window").height;
 
-export default function SignUp({navigation}) {
+export default function SignInEmail({navigation}) {
     return (
         <ScrollView 
         style={styles.cotainer}>
@@ -17,7 +17,7 @@ export default function SignUp({navigation}) {
         <View
             style={styles.header}>
 
-            <Text style={styles.headline}>S'inscrire</Text>
+            <Text style={styles.headline}>S'identifier</Text>
             <Text style={styles.subline}>Apprentissage academy, votre academy</Text>
 
             </View>
@@ -29,10 +29,11 @@ export default function SignUp({navigation}) {
 
         <Animatable.View
         animation="fadeInUp"
-        duration={1500}>
+        duration={2000}>
 
      
         <Input
+        
         errorMessage='Entrer une adresse email valide'
         placeholder='votre-mail@gmail.com'
         errorStyle={{ color: 'red' }}
@@ -60,33 +61,22 @@ export default function SignUp({navigation}) {
         }
         />
 
-        <Input
-        label='Confirmer votre Mot de passe'
-        placeholder='un grand secret'
-        secureTextEntry={true}
-        errorStyle={{ color: 'red' }}
-        leftIcon={
-            <Icon
-            name='lock-open-outline'
-            size={20}
-            color='#ffc814'
-            />
-        }
-        />
-
         <Text 
         onPress={() => Alert.alert('Mot de pass oublie', 'fonction will be availble on production')}
         style={styles.captionImportant}> Mot de passe oublié </Text>
         </Animatable.View>
+
+        
         <Divider style={{marginVertical: 15}}/>
 
         <TouchableOpacity
         style={styles.btn}>
             <Text
-            style={styles.btnText}>Crée compte</Text>
+            style={styles.btnText}>S'identifier</Text>
         </TouchableOpacity>
 
         <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.navigate('SignUp')} style={{color:'#ffc814'}}> S'inscrire</Text></Text>
+        
         
         </View>
 
@@ -100,10 +90,10 @@ const styles = StyleSheet.create({
     },
     header:{
         backgroundColor: '#ffc814',
-        height: heightScreen*0.2,
+        height: heightScreen*0.3,
         borderBottomLeftRadius: 100,
         paddingLeft: 55,
-        paddingTop: 50,
+        paddingTop: 70,
 
     },
     headline:{
@@ -117,7 +107,7 @@ const styles = StyleSheet.create({
     },
     body:{
         backgroundColor: '#fff',
-        height: heightScreen*0.8,
+        height: heightScreen*0.7,
         borderTopEndRadius: 75,
         padding: 20,
     },
