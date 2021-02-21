@@ -70,12 +70,13 @@ export default function SignInEmail({navigation}) {
         <Divider style={{marginVertical: 15}}/>
 
         <TouchableOpacity
+        onPress={() => navigation.replace('Accueil')}
         style={styles.btn}>
             <Text
             style={styles.btnText}>S'identifier</Text>
         </TouchableOpacity>
 
-        <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.navigate('SignUp')} style={{color:'#ffc814'}}> S'inscrire</Text></Text>
+        <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.replace('SignUp')} style={{color:'#ffc814'}}> S'inscrire</Text></Text>
         
         
         </View>

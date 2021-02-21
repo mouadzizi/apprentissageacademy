@@ -47,6 +47,8 @@ export default function SignUp({navigation}) {
         />
 
         <Input
+        
+        errorMessage='Votre mot de passe est faible '
         label='Mot de passe'
         placeholder='un grand secret'
         secureTextEntry={true}
@@ -81,12 +83,13 @@ export default function SignUp({navigation}) {
         <Divider style={{marginVertical: 15}}/>
 
         <TouchableOpacity
-        style={styles.btn}>
+        style={styles.btn}
+        onPress={() => navigation.replace("Home")}>
             <Text
             style={styles.btnText}>Crée compte</Text>
         </TouchableOpacity>
 
-        <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.navigate('SignUp')} style={{color:'#ffc814'}}> S'inscrire</Text></Text>
+        <Text style={styles.caption}>en créant un compte avec nous, vous acceptez notre <Text onPress={() => navigation.navigate('politique de confidentialité')} style={{color:'#ffc814'}}> politique de confidentialité</Text></Text>
         
         </View>
 
