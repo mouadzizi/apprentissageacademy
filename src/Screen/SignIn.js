@@ -55,7 +55,7 @@ export default function SignIn({navigation}) {
 
         <TouchableOpacity
         style={styles.signUpBtn}
-        onPress={()=>navigation.replace('SignUp')}>
+        onPress={()=>navigation.push('SignUp')}>
             <Text
             style={styles.signUnBtnText}>S'inscrire</Text>
         </TouchableOpacity>

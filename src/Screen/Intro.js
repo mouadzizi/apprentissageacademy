@@ -8,8 +8,8 @@ export default function Intro({navigation}) {
     <Onboarding
         onSkip={()=>{navigation.replace("SignIn")}}
         onDone={()=>{navigation.replace("SignIn")}}
-        nextLabel="suivant"
-        skipLabel="passer"
+        nextLabel="Suivant"
+        skipLabel="Passer"
             pages={[
                 {
                 backgroundColor: '#1a1a1a',
