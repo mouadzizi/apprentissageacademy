@@ -1,44 +1,119 @@
 import React from 'react'
-import { View, Text, StatusBar, TouchableHighlight, StyleSheet, FlatList, Alert} from 'react-native'
+import { View, StyleSheet, FlatList, Text } from 'react-native'
+import { ScrollView, TouchableOpacity } from 'react-native-gesture-handler';
 
-const DATA=[ 'first item', 'second item', 'third item', 'g', 'h', 'j', 'kk']
+const COLLEGE_DATA = [{
+    id: '1c',
+    title: '1er Année',
+},
+{
+    id: '2c',
+    title: '2éme Année',
+},
+{
+    id: '3c',
+    title: '3éme Année',
+},]
+
+const LYCEE_DATA = [{
+    id: '1l',
+    title: 'Tronc Commun',
+},
+{
+    id: '2l',
+    title: '1er Bac',
+},
+{
+    id: '3l',
+    title: '2éme Bac',
+},]
 
 
-const Item = ({ item }) => (
-    <TouchableHighlight style={styles.touch}>
-                 <Text style={styles.text}> {item} </Text>  
-    </TouchableHighlight>
-  );
 
 export default function Acceuil() {
-    return (
-        <View>
-        <StatusBar backgroundColor="#ffc814"/>
 
+    return (
+        <ScrollView style={styles.container}>
+            <Text style={styles.title} > Collége </Text>
             <FlatList
-                data={DATA}
-                renderItem={Item}
-                keyExtractor={(item)=> item}
-                
+                style={styles.list}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={COLLEGE_DATA}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) =>
+                    <TouchableOpacity style={styles.itemContainer}>
+                        <View style={styles.item}>
+                            <Text style={styles.itemText} > {item.title} </Text>
+                        </View>
+                    </TouchableOpacity>
+                }
             />
-        </View>
+            <Text style={styles.title} > Lycée </Text>
+            <FlatList
+                style={styles.list}
+                horizontal
+                showsHorizontalScrollIndicator={false}
+                data={LYCEE_DATA}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) =>
+                    <TouchableOpacity style={styles.itemContainer}>
+                        <View style={[styles.item, { backgroundColor: '#3498db' }]}>
+                            <Text style={styles.itemText} > {item.title} </Text>
+                        </View>
+                    </TouchableOpacity>
+                }
+            />
+                  <Text style={styles.title} > Lycée </Text>
+            <FlatList
+                style={styles.list}
+                showsHorizontalScrollIndicator={false}
+                horizontal
+                data={LYCEE_DATA}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) =>
+                    <TouchableOpacity style={styles.itemContainer}>
+                        <View style={[styles.item, { backgroundColor: '#2ecc71' }]}>
+                            <Text style={styles.itemText} > {item.title} </Text>
+                        </View>
+                    </TouchableOpacity>
+                }
+            />
+        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     container: {
-      flex: 1,
-      paddingTop: StatusBar.currentHeight,
-      marginHorizontal: 16
+        flex: 1,
     },
-    touch: {
-        textAlign : 'center',
-        height: 40,
-        backgroundColor: '#c2c2c2',
+    list: {
+        flexGrow: 0,
+    },
+    itemContainer: {
+        paddingHorizontal: 6,
+
+    },
+    item: {
+        borderWidth: 1,
+        height: 200,
+        width: 122,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: '#e67e22',
+        borderRadius: 11
+    },
+    itemText: {
+        fontSize: 19,
+        fontWeight: "bold",
+        color: 'white'
+    },
+    title: {
+        fontSize: 20,
         marginVertical: 20,
-    },
-    text : {
-        textAlign: 'center', fontSize: 18,
+        fontWeight: "100",
+        letterSpacing: 2
     }
-    
-  });
+}
+
+);
