@@ -3,7 +3,7 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-import Accueil from '../Screen/Accueil';
+import Accueil from './homeStack';
 import Profile from '../Screen/Profile';
 
 

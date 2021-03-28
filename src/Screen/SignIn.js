@@ -48,7 +48,7 @@ export default function SignIn({navigation}) {
 
         <TouchableOpacity
         style={styles.signInBtn}
-        onPress={()=>navigation.replace('Home')}>
+        onPress={()=>navigation.replace('SignInEmail')}>
             <Text
             style={styles.signInBtnText}>S'identifier</Text>
         </TouchableOpacity>
