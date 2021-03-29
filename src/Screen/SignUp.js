@@ -76,9 +76,6 @@ export default function SignUp({navigation}) {
         }
         />
 
-        <Text 
-        onPress={() => Alert.alert('Mot de pass oublie', 'fonction will be availble on production')}
-        style={styles.captionImportant}> Mot de passe oublié </Text>
         </Animatable.View>
         <Divider style={{marginVertical: 15}}/>
 
@@ -88,6 +85,9 @@ export default function SignUp({navigation}) {
             <Text
             style={styles.btnText}>Crée compte</Text>
         </TouchableOpacity>
+
+        <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.replace('SignInEmail')} style={{color:'#ffc814'}}> S'identifier</Text></Text>
+        <Text></Text>
 
         <Text style={styles.caption}>en créant un compte avec nous, vous acceptez notre <Text onPress={() => navigation.navigate('politique de confidentialité')} style={{color:'#ffc814'}}> politique de confidentialité</Text></Text>
         
