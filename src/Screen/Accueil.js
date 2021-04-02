@@ -51,7 +51,7 @@ const LYCEE_DATA = [{
 export default function Acceuil({navigation}) {
     return (
         <ScrollView>
-        <StatusBar backgroundColor="#ffc814"/>
+        <StatusBar backgroundColor="#ffc814" barStyle='dark-content' />
 
             <Text style={styles.title} > Collége </Text>
             <FlatList
