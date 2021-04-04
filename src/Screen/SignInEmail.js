@@ -1,13 +1,39 @@
-import React from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert} from 'react-native'
+import React,{useState} from 'react'
+import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert,ActivityIndicator} from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider, Input } from 'react-native-elements';
+import {signIn} from '../API/APIFunctions'
 
 import * as Animatable from 'react-native-animatable';
 
 const heightScreen = Dimensions.get("window").height;
 
 export default function SignInEmail({navigation}) {
+    const [data, setData] = useState({
+        email:'',
+        password:''
+    })
+    const [loading, setLoading] = useState(false)
+    const input = React.useRef();
+const signInAction =()=>{
+    setLoading(true)
+    signIn(data.email.trim(),data.password.trim()).then(user=>{
+        if(user!=null) navigation.replace('Home')
+        
+    }).catch(err=>{
+        setLoading(false)
+        switch (err.code) {
+            case 'auth/invalid-email':
+                alert(err.message)
+                break;
+        
+           case 'auth/wrong-password':
+            alert('Mot de pass incorrect')
+            break;
+        }
+    })
+   
+}
     return (
         <ScrollView 
         style={styles.cotainer}>
@@ -33,7 +59,7 @@ export default function SignInEmail({navigation}) {
 
      
         <Input
-        
+        onChangeText={(e)=>setData({...data,email:e})}
         errorMessage='Entrer une adresse email valide'
         placeholder='votre-mail@gmail.com'
         errorStyle={{ color: 'red' }}
@@ -45,9 +71,13 @@ export default function SignInEmail({navigation}) {
             color='#ffc814'
             />
         }
+        keyboardType='email-address'
+        returnKeyType='next'
+        onSubmitEditing={()=>input.current.focus()}
         />
 
         <Input
+        onChangeText={(e)=>setData({...data,password:e})}
         label='Mot de passe'
         placeholder='un grand secret'
         secureTextEntry={true}
@@ -59,6 +89,10 @@ export default function SignInEmail({navigation}) {
             color='#ffc814'
             />
         }
+        autoCapitalize='none'
+        onSubmitEditing={()=>signInAction()}
+        ref={input}
+
         />
 
         <Text 
@@ -70,8 +104,11 @@ export default function SignInEmail({navigation}) {
         <Divider style={{marginVertical: 15}}/>
 
         <TouchableOpacity
-        onPress={() => navigation.replace('Home')}
-        style={styles.btn}>
+        onPress={signInAction}
+        style={styles.btn}
+        
+        disabled={!data.email || !data.password || loading}>
+              { loading? <ActivityIndicator style={styles.indicator} color='white' size='large' animating /> : null  }
             <Text
             style={styles.btnText}>S'identifier</Text>
         </TouchableOpacity>
@@ -135,4 +172,9 @@ const styles = StyleSheet.create({
         textAlign: 'center', 
         color: '#c2c2c2'
     },
+    indicator:{
+        position:'absolute',
+        top:'10%',
+        left:'2%'
+    }
 })

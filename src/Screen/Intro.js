@@ -2,9 +2,20 @@ import React from 'react'
 import { Image } from 'react-native';
 import Onboarding from 'react-native-onboarding-swiper';
 
+import {auth} from '../API/firebase'
+
 export default function Intro({navigation}) {
+    React.useEffect(()=>{
+     const __unsub=  auth.onAuthStateChanged(user=>{
+            if (user) {
+                navigation.replace('Home')
+            }
+        })
+        return ()=> {
+            __unsub()
+        }
+    },[])
     return (
-    
     <Onboarding
         onSkip={()=>{navigation.replace("SignIn")}}
         onDone={()=>{navigation.replace("SignIn")}}
