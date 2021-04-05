@@ -1,42 +1,57 @@
-import React from 'react'
-import { ScrollView, StyleSheet, View } from 'react-native'
+import React, { useState, useEffect } from 'react'
+import { ScrollView, StyleSheet, View, FlatList, Text } from 'react-native'
 
-import Cmp from '../Component/cmp'
+import Cmp from '../Component/cmp';
+import { st } from '../API/firebase'
 
-export default function LevelDetails({navigation}) {
+export default function LevelDetails({ navigation, route }) {
+    const [list, setList] = useState([])
+    const { level } = route.params;
+
+
+    useEffect(() => {
+        console.log(navigation);
+        getItems().then(res => {
+            const data = res.map(f => { 
+                return {
+                    title:f.name,
+                    fullPath:f.fullPath
+                }
+             } )
+            setList(data)
+        })
+    }, [])
+    const getItems = async () => {
+
+        const items = await st.ref().child('/' + level.path + '/' + level.title).listAll()
+
+        return Promise.all(items.prefixes)
+    }
     return (
-        <ScrollView
-        style={{backgroundColor: '#ffc814'}}>
+        <View style={{ borderWidth: 1, flex: 1 }} >
+            <FlatList
+                style={{ flex: 1 }}
+                numColumns={2}
+                data={list}
+                ListEmptyComponent={<Text> Empty </Text>}
+                keyExtractor={(item, index) => index.toString()}
+                renderItem={(item) => (
+                    <View style={styles.ViewConatiner}>
+                        <Cmp title={item.item.title} clickHandler={() => navigation.navigate('TabTopNav',{path:item.item.fullPath})} />
+                    </View>
+                )
+                }
+            />
+        </View>
 
-            <View style={styles.ViewConatiner}>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            </View>
-
-            <View style={styles.ViewConatiner}>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            </View>
-
-            <View style={styles.ViewConatiner}>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            </View>
-
-            <View style={styles.ViewConatiner}>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            <Cmp clickHandler={()=> navigation.navigate('TabTopNav')}/>
-            </View>
-
-        </ScrollView>
     )
 }
 
 const styles = StyleSheet.create({
     ViewConatiner: {
-        flexDirection : 'row',
+        flexDirection: 'row',
         justifyContent: 'space-around',
         marginVertical: 10
-        
+
     },
 });

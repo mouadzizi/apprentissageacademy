@@ -16,7 +16,7 @@ export default function cmp(props) {
         style={{alignSelf : 'center'}}/>
 
         <Text
-        style={styles.title}> Mathematique </Text>
+        style={styles.title}> {props.title} </Text>
         <Text
         style={styles.subTitle}> 30 cours PDF / 5 Video </Text>
 
