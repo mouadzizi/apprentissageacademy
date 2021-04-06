@@ -10,7 +10,6 @@ export default function LevelDetails({ navigation, route }) {
 
 
     useEffect(() => {
-        console.log(navigation);
         getItems().then(res => {
             const data = res.map(f => { 
                 return {
@@ -37,7 +36,7 @@ export default function LevelDetails({ navigation, route }) {
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={(item) => (
                     <View style={styles.ViewConatiner}>
-                        <Cmp title={item.item.title} clickHandler={() => navigation.navigate('TabTopNav',{path:item.item.fullPath})} />
+                        <Cmp title={item.item.title} clickHandler={() => navigation.push('TabTopNav',{path:item.item.fullPath})} />
                     </View>
                 )
                 }

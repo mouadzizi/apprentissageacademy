@@ -12,6 +12,7 @@ export default function Intro({ navigation }) {
     React.useEffect(() => {
         const __unsub = auth.onAuthStateChanged(user => {
             if (user) {
+                console.log('user found ');
                 navigation.replace('Home')
             }
            else setloading(false)

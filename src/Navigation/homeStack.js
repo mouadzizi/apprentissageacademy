@@ -21,7 +21,7 @@ const Stack = createStackNavigator();
             <Stack.Screen name="Acceuil" component={Acceuil} options={{ headerShown: false }}/>
             <Stack.Screen name="LevelDetails" component={LevelDetails} options={{ headerShown: false }}/>
             <Stack.Screen name="TabTopNav" component={TabTopNav} options={{ headerShown: false }}/>
-            <Stack.Screen name="PdfView" component={PdfView} options={{ headerShown: false }}/>
+           
 
         </Stack.Navigator>
 

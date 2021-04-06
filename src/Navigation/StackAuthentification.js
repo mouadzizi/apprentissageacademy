@@ -12,6 +12,7 @@ import SignUp from '../Screen/SignUp';
 
 import Privacy from '../Screen/Privacy';
 import Home from './bottomStack'
+import PdfView from '../Screen/PdfView'
 
 export default function StackAuthentification() {
 const Stack = createStackNavigator();
@@ -36,7 +37,7 @@ const Stack = createStackNavigator();
             headerStyle: {
             backgroundColor: '#ffc814',
             }, }}/>
-
+             <Stack.Screen name="PdfView" component={PdfView} options={{ headerShown: false }}/>
         </Stack.Navigator>
 
     </NavigationContainer>

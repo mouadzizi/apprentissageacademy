@@ -25,22 +25,27 @@ const COLLEGE_DATA = [{
 const LYCEE_DATA = [{
     id: '1l',
     title: 'T.Commun',
+    path:'Lycée'
 },
 {
     id: '2l',
     title: '1er Bac',
+    path:'Lycée'
 },
 {
     id: '3l',
     title: '2éme Bac',
+    path:'Lycée'
 },
 {
     id: '3ls',
     title: '2éme Bac',
+    path:'Lycée'
 },
 {
     id: '3lss',
     title: '2éme Bac',
+    path:'Lycée'
 },]
 
 export default function Acceuil({ navigation }) {
@@ -75,7 +80,7 @@ export default function Acceuil({ navigation }) {
                 renderItem={({ item }) =>
                     <TouchableOpacity
                         style={styles.itemContainer}
-                        onPress={() => navigation.navigate('LevelDetails',{level:item.id})}>
+                        onPress={() => navigation.navigate('LevelDetails',{level:item})}>
                         <View style={[styles.item, { backgroundColor: '#3498db' }]}>
                             <Text style={styles.itemText} > {item.title} </Text>
                         </View>

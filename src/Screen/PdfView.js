@@ -6,37 +6,28 @@ import { st } from '../API/firebase'
 
 export default function PdfView({route}) {
     const [isReady, setIsReady] = useState(false)
-    const link = route.params.url
+    const url = route.params.link
 
     useEffect(() => {
-        // var stRef = st.ref()
-        // stRef.child('/Collége/1er Année/Historique').listAll().then(res => {
-        //     res.items.forEach(p => {
-        //         p.getDownloadURL().then(url => {
-        //             setLink(url)
-        //             setIsReady(true)
-        //         })
-        //     })
-        // })
+
     }, [])
     return (
         <View style={styles.pageContainer}>
-            { isReady ?
+           <ActivityIndicator style={styles.indicator} color='red' size='large' animating={!isReady} />
                 <View>
-                   
                     <Pdf
-                        
+                        onLoadEnd={()=>setIsReady(true)}
                         withScroll
                         withPinchZoom
                         source={{
                             uri:
-                                link
+                                url
                         }}
                         style={styles.pdf}
                     />
                 </View>
-                :  <ActivityIndicator style={styles.indicator} color='red' size='large' animating={true} />
-            }
+                
+           
 
 
 

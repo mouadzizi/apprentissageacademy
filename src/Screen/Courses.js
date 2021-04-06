@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text } from 'react-native'
 import { ListItem, Icon } from 'react-native-elements';
+import {useNavigation,useRoute} from '@react-navigation/native'
 import { st } from '../API/firebase'
 
 
-export default function Courses({navigation,path}) {
+export default function Courses({path}) {
   const [list, setList] = useState([])
+  const navigation = useNavigation();
+  
   useEffect(() => {
-    console.log(navigation);
       getCourses().then(files=>{
         setList(files)
       })
@@ -18,7 +20,7 @@ export default function Courses({navigation,path}) {
     const courses = data.items.map( async f=> {
       const link = await f.getDownloadURL()
         return {
-          title:f.name,
+          title:f.name.substring(0,f.name.length -4),
           icon:'rowing',
           url:link
         }
@@ -30,10 +32,10 @@ export default function Courses({navigation,path}) {
     <View>
       {
         list.map((item, i) => (
-          <ListItem key={i} bottomDivider onPress={() => navigation.navigate('PdfView')}>
+          <ListItem key={i} bottomDivider onPress={() => navigation.navigate('PdfView',{link:item.url})}>
             <Icon name={item.icon} />
             <ListItem.Content>
-              <ListItem.Title>{item.title}</ListItem.Title>
+              <ListItem.Title style={{textAlign:'right',width:'100%'}} >{item.title}</ListItem.Title>
             </ListItem.Content>
             <ListItem.Chevron solid />
           </ListItem>

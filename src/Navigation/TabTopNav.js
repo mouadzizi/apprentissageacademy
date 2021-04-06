@@ -8,7 +8,7 @@ const Tab = createMaterialTopTabNavigator();
 
 export default function TabTopNav({route}) {
   useEffect(()=>{ 
-    console.log(route.params);
+   
   },[])
     return (
             <Tab.Navigator>
