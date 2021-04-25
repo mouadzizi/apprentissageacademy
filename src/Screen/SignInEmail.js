@@ -3,17 +3,19 @@ import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider, Input } from 'react-native-elements';
 import { signIn } from '../API/APIFunctions'
-
+import {EvilIcons} from 'react-native-vector-icons'
 import * as Animatable from 'react-native-animatable';
 
 const heightScreen = Dimensions.get("window").height;
 
 export default function SignInEmail({ navigation }) {
+
     const [data, setData] = useState({
         email: '',
         password: ''
     })
     const [loading, setLoading] = useState(false)
+    const [errMes, setErrMes] = useState('')
     const input = React.useRef();
     const signInAction = () => {
         setLoading(true)
@@ -24,22 +26,26 @@ export default function SignInEmail({ navigation }) {
             setLoading(false)
             switch (err.code) {
                 case 'auth/invalid-email':
-                    alert(err.message)
+                    setErrMes("Votre Email est inccorect")
                     break;
-
                 case 'auth/wrong-password':
-                    alert('Mot de pass incorrect')
+                    setErrMes("Mot de Pass ou bien Email est incorrect")
                     break;
             }
         })
-
     }
+
     return (
-        <ScrollView
+        <View
             style={styles.cotainer}>
 
-            <View
-                style={{ backgroundColor: '#fff' }}>
+                <TouchableOpacity
+                style={styles.FAB}
+                onPress={()=> navigation.navigate('SignIn')}>
+                    <EvilIcons name="arrow-left" size={50} color="white"/>
+                </TouchableOpacity>
+
+            <View style={styles.headerContainer}>
                 <View
                     style={styles.header}>
 
@@ -52,7 +58,8 @@ export default function SignInEmail({ navigation }) {
             <View
                 style={styles.body}>
 
-
+                <Text
+                style={styles.errorMessage}>{errMes}</Text>
                 <Animatable.View
                     animation="fadeInUp"
                     duration={2000}>
@@ -60,9 +67,7 @@ export default function SignInEmail({ navigation }) {
 
                     <Input
                         onChangeText={(e) => setData({ ...data, email: e })}
-                        errorMessage='Entrer une adresse email valide'
                         placeholder='votre-mail@gmail.com'
-                        errorStyle={{ color: 'red' }}
                         label='E-mail'
                         leftIcon={
                             <Icon
@@ -112,21 +117,12 @@ export default function SignInEmail({ navigation }) {
                     <Text
                         style={styles.btnText}>S'identifier</Text>
                 </TouchableOpacity>
-                <TouchableOpacity
-                    onPress={() => navigation.navigate('Home')}
-                    style={styles.btn}
-
-                >
-
-                    <Text
-                        style={styles.btnText}>Just Go</Text>
-                </TouchableOpacity>
-
-                <Text style={styles.caption}>Avez vous avez pas  un compte ? <Text onPress={() => navigation.replace('SignUp')} style={{ color: '#ffc814' }}> S'inscrire</Text></Text>
+  
+                <Text style={styles.caption}>Avez vous avez pas un compte ? <Text onPress={() => navigation.replace('SignUp')} style={{ color: '#ffc814' }}> S'inscrire</Text></Text>
 
             </View>
 
-        </ScrollView>
+        </View>
     )
 }
 
@@ -134,9 +130,12 @@ const styles = StyleSheet.create({
     cotainer: {
         backgroundColor: '#ffc814'
     },
+    headerContainer:{
+        backgroundColor: 'white',
+    },
     header: {
         backgroundColor: '#ffc814',
-        height: heightScreen * 0.3,
+        height: heightScreen*0.23,
         borderBottomLeftRadius: 100,
         paddingLeft: 55,
         paddingTop: 70,
@@ -153,10 +152,14 @@ const styles = StyleSheet.create({
     },
     body: {
         backgroundColor: '#fff',
-        height: heightScreen * 0.7,
+        height: heightScreen * 0.8,
         borderTopEndRadius: 75,
         padding: 20,
     },
+    errorMessage:{
+        color: 'red',
+        textAlign: 'center'
+    },  
     btn: {
         marginVertical: 25,
         backgroundColor: '#ffc814',
@@ -184,5 +187,11 @@ const styles = StyleSheet.create({
         position: 'absolute',
         top: '10%',
         left: '2%'
+    },
+    FAB:{
+        position : 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 1
     }
 })

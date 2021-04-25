@@ -10,11 +10,9 @@ const heightScreen = Dimensions.get("window").height
 export default function SignIn({navigation}) {
 
     return (
-        <ScrollView style={styles.container}>
+        <View style={styles.containerGlobal}>
 
-        <View 
-        style={{marginBottom: 50}}>
-
+        <View>
         <Animatable.Image 
         animation="pulse" iterationCount={5}
                 source={require('../../assets/icon.png')}
@@ -24,10 +22,10 @@ export default function SignIn({navigation}) {
 
             <Text style={styles.headline1}>Apprentissage</Text>
             <Text style={styles.headline2}>Academy</Text>
-
         </View>
 
         <View>
+
         <Button
         icon={
             <Icon
@@ -48,14 +46,14 @@ export default function SignIn({navigation}) {
 
         <TouchableOpacity
         style={styles.signInBtn}
-        onPress={()=>navigation.replace('SignInEmail')}>
+        onPress={()=>navigation.navigate('SignInEmail')}>
             <Text
             style={styles.signInBtnText}>S'identifier</Text>
         </TouchableOpacity>
 
         <TouchableOpacity
         style={styles.signUpBtn}
-        onPress={()=>navigation.push('SignUp')}>
+        onPress={()=>navigation.navigate('SignUp')}>
             <Text
             style={styles.signUnBtnText}>S'inscrire</Text>
         </TouchableOpacity>
@@ -66,11 +64,11 @@ export default function SignIn({navigation}) {
 
 
             
-    </ScrollView>
+    </View>
     )
 }
 const styles = StyleSheet.create({
-    container: {
+    containerGlobal: {
         height: heightScreen, 
         padding: 20
     },

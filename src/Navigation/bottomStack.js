@@ -36,7 +36,7 @@ export default function bottomStack() {
         }}>
 
 
-            <Tab.Screen name="Accueil" component={Accueil} />
+            <Tab.Screen name="Accueil" component={Accueil} options={{ headerShown: false }}/>
             <Tab.Screen name="Profile" component={Profile} />
          </Tab.Navigator>
     )

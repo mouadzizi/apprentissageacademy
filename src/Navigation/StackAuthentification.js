@@ -29,14 +29,7 @@ const Stack = createStackNavigator();
             
             <Stack.Screen name="politique de confidentialité" component={Privacy}/>
             
-            <Stack.Screen name="Home" component={Home} 
-            options={{
-            headerTitleAlign: 'center',
-            headerTintColor: 'white',
-            title: 'Apprentissage Academy',
-            headerStyle: {
-            backgroundColor: '#ffc814',
-            }, }}/>
+            <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
              <Stack.Screen name="PdfView" component={PdfView} options={{ headerShown: false }}/>
         </Stack.Navigator>
 

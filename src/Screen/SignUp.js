@@ -1,8 +1,9 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider, Input } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
+import {EvilIcons} from 'react-native-vector-icons'
 
 //Api functions
 import { signUp } from '../API/APIFunctions'
@@ -11,13 +12,14 @@ import { ActivityIndicator } from 'react-native';
 const heightScreen = Dimensions.get("window").height;
 
 export default function SignUp({ navigation }) {
-    const [User, setUser] = React.useState({
+
+    const [User, setUser] = useState({
         email: '',
         password: '',
         confirmPassword: ''
     })
-    const [loading, setLoading] = React.useState(false)
-
+    const [loading, setLoading] = useState(false)
+    const [errMes, setErrMes] = useState('')
 
     const signUpAction = async () => {
         setLoading(true);
@@ -27,23 +29,29 @@ export default function SignUp({ navigation }) {
                 setLoading(false)
                 navigation.replace('Home')
             })
-                .catch(err => {
-                    alert(err.message)
+                .catch(err => {    
+                    setErrMes("Email pas correct")
                     setLoading(false)
                 })
 
         }
        else {
-           alert("Passwords didn't match")
+           setErrMes("Les mots de pass sont pas identique")
            setLoading(false)
        }
     }
     return (
-        <ScrollView
+        <View
             style={styles.cotainer}>
 
+                <TouchableOpacity
+                style={styles.FAB}
+                onPress={()=> navigation.navigate('SignIn')}>
+                    <EvilIcons name="arrow-left" size={50} color="white"/>
+                </TouchableOpacity>
+
             <View
-                style={{ backgroundColor: '#fff' }}>
+                style={styles.headerContainer}>
                 <View
                     style={styles.header}>
 
@@ -56,16 +64,15 @@ export default function SignUp({ navigation }) {
             <View
                 style={styles.body}>
 
-
+                    <Text
+                    style={styles.errorMessage}> {errMes} </Text>
                 <Animatable.View
                     animation="fadeInUp"
                     duration={1500}>
 
 
                     <Input
-                        errorMessage='Entrer une adresse email valide'
                         placeholder='votre-mail@gmail.com'
-                        errorStyle={{ color: 'red' }}
                         label='E-mail'
                         leftIcon={
                             <Icon
@@ -78,12 +85,9 @@ export default function SignUp({ navigation }) {
                     />
 
                     <Input
-
-                        errorMessage='Votre mot de passe est faible '
                         label='Mot de passe'
                         placeholder='un grand secret'
                         secureTextEntry={true}
-                        errorStyle={{ color: 'red' }}
                         leftIcon={
                             <Icon
                                 name='lock-open-outline'
@@ -110,6 +114,7 @@ export default function SignUp({ navigation }) {
                     />
 
                 </Animatable.View>
+
                 <Divider style={{ marginVertical: 15 }} />
 
                 <TouchableOpacity
@@ -117,7 +122,7 @@ export default function SignUp({ navigation }) {
                     onPress={signUpAction}
                     disabled={!User.email || !User.password || !User.confirmPassword }
                     >
-                    { loading? <ActivityIndicator style={styles.indicator} color='white' size='large'  /> : null  }
+                    { loading ? <ActivityIndicator style={styles.indicator} color='white' size='large'  /> : null  }
                     <Text
                         style={styles.btnText}>Crée compte</Text>
                 </TouchableOpacity>
@@ -129,7 +134,7 @@ export default function SignUp({ navigation }) {
 
             </View>
 
-        </ScrollView>
+        </View>
     )
 }
 
@@ -137,9 +142,12 @@ const styles = StyleSheet.create({
     cotainer: {
         backgroundColor: '#ffc814'
     },
+    headerContainer: {
+        backgroundColor: 'white'
+    },
     header: {
         backgroundColor: '#ffc814',
-        height: heightScreen * 0.2,
+        height: heightScreen * 0.23,
         borderBottomLeftRadius: 100,
         paddingLeft: 55,
         paddingTop: 50,
@@ -147,6 +155,7 @@ const styles = StyleSheet.create({
     },
     headline: {
         fontSize: 35,
+        marginTop: 15,
         fontWeight: 'bold',
         color: 'white'
     },
@@ -159,6 +168,10 @@ const styles = StyleSheet.create({
         height: heightScreen * 0.8,
         borderTopEndRadius: 75,
         padding: 20,
+    },
+    errorMessage: {
+        color: 'red',
+        textAlign: 'center'
     },
     btn: {
         marginVertical: 25,
@@ -187,5 +200,11 @@ const styles = StyleSheet.create({
         position:'absolute',
         top:'10%',
         left:'2%'
+    },
+    FAB:{
+        position : 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 1
     }
 })
