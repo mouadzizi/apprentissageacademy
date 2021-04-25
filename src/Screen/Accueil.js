@@ -12,7 +12,7 @@ const COLLEGE_DATA = [{
 },
 {
     id: '2c',
-    title: '2éme Année',
+    title: '2éme Anneé',
     path:'Collége'
 },
 {

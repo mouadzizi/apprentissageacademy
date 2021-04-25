@@ -11,6 +11,7 @@ export default function LevelDetails({ navigation, route }) {
 
     useEffect(() => {
         getItems().then(res => {
+            console.log(level);
             const data = res.map(f => { 
                 return {
                     title:f.name,
