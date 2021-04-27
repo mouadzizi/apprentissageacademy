@@ -26,9 +26,7 @@ const Stack = createStackNavigator();
             <Stack.Screen name="SignIn" component={SignIn} options={{ headerShown: false }}/>
             <Stack.Screen name="SignUp" component={SignUp} options={{ headerShown: false }}/>
             <Stack.Screen name="SignInEmail" component={SignInEmail} options={{ headerShown: false }}/>
-            
             <Stack.Screen name="politique de confidentialité" component={Privacy}/>
-            
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
              <Stack.Screen name="PdfView" component={PdfView} options={{ headerShown: false }}/>
         </Stack.Navigator>

@@ -1,8 +1,6 @@
 import React from 'react'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-
 import Ionicons from 'react-native-vector-icons/Ionicons';
-
 import Accueil from './homeStack';
 import Profile from '../Screen/Profile';
 
@@ -35,8 +33,7 @@ export default function bottomStack() {
         inactiveTintColor: 'gray',
         }}>
 
-
-            <Tab.Screen name="Accueil" component={Accueil} options={{ headerShown: false }}/>
+            <Tab.Screen name="Accueil" component={Accueil}/>
             <Tab.Screen name="Profile" component={Profile} />
          </Tab.Navigator>
     )

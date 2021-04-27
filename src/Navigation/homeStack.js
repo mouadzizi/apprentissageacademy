@@ -8,7 +8,6 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Acceuil from '../Screen/Accueil';
 import LevelDetails from '../Screen/LevelDetails'
 import TabTopNav from '../Navigation/TabTopNav'
-import PdfView from '../Screen/PdfView'
 
 export default function HomeStack() {
 
