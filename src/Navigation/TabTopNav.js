@@ -12,7 +12,7 @@ export default function TabTopNav({route}) {
   },[])
     return (
             <Tab.Navigator>
-              <Tab.Screen name="Pdf" children={()=><Pdf path={route.params.path} />} />
+              <Tab.Screen name="Pdf" children={()=> <Pdf path={route.params.path} />} />
               <Tab.Screen name="Video" component={Video} />
             </Tab.Navigator>
           );
