@@ -12,7 +12,8 @@ import SignUp from '../Screen/SignUp';
 
 import Privacy from '../Screen/Privacy';
 import Home from './bottomStack'
-import PdfView from '../Screen/PdfView'
+import PdfView from '../Screen/PdfView';
+import VideoView from '../Screen/VideoView'
 
 export default function StackAuthentification() {
 const Stack = createStackNavigator();
@@ -29,6 +30,7 @@ const Stack = createStackNavigator();
             <Stack.Screen name="politique de confidentialité" component={Privacy}/>
             <Stack.Screen name="Home" component={Home} options={{ headerShown: false }}/>
              <Stack.Screen name="PdfView" component={PdfView} options={{ headerShown: false }}/>
+             <Stack.Screen name="VideoView" component={VideoView} options={{ headerShown: false }}/>
         </Stack.Navigator>
 
     </NavigationContainer>

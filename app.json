@@ -10,6 +10,9 @@
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
+    "facebookScheme": "fb2954198578192415",
+    "facebookAppId": "2954198578192415",
+    "facebookDisplayName": "Apprentissage Acedemy",
     "updates": {
       "fallbackToCacheTimeout": 0
     },
@@ -24,7 +27,7 @@
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.moussa21.apprentissageacademy"
+      "package": "com.us.apprentissageacademy"
     },
     "web": {
       "favicon": "./assets/favicon.png"
