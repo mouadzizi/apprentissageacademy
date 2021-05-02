@@ -6,14 +6,14 @@ import Video from '../Screen/Video'
 
 const Tab = createMaterialTopTabNavigator();
 
-export default function TabTopNav({route}) {
+export default function TabTopNav({route,navigation}) {
   useEffect(()=>{ 
    
   },[])
     return (
             <Tab.Navigator>
-              <Tab.Screen name="Pdf" children={()=> <Pdf path={route.params.path} />} />
-              <Tab.Screen name="Video" component={Video} />
+              <Tab.Screen name="Pdf" children={()=> <Pdf nav={navigation} path={route.params.path} />} />
+              <Tab.Screen name="Video"  children={()=> <Video navigation={navigation} path={route.params.path} />}  />
             </Tab.Navigator>
           );
 }
