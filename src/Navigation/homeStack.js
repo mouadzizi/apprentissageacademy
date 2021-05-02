@@ -5,7 +5,7 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //Pages of Authentification
 
-import Acceuil from '../Screen/Accueil';
+import Acceuil from '../Screen/Home';
 import LevelDetails from '../Screen/LevelDetails'
 import TabTopNav from '../Navigation/TabTopNav'
 

@@ -6,9 +6,6 @@ export default function Slider() {
 
     
     const image1 = '../../../assets/slides1.jpg'
-    const image2 = '../../../assets/slides1.jpg'
-    const image3 = '../../../assets/slides1.jpg'
-    const image4 = '../../../assets/slides1.jpg'
 
 
     return (
