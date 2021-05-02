@@ -6,12 +6,12 @@ import { st } from '../API/firebase'
 
 export default function LevelDetails({ navigation, route }) {
     const [list, setList] = useState([])
-    const { level } = route.params;
+     const { level } = route.params;
 
 
     useEffect(() => {
         getItems().then(res => {
-            console.log(level);
+             console.log(level);
             const data = res.map(f => { 
                 return {
                     title:f.name,

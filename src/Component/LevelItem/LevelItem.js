@@ -6,7 +6,7 @@ import styles from './LevelItem.style';
 const logo= require('../../../assets/icon.png');
 export default function Level({background, title, onClick}) {
     return (
-        <TouchableOpacity style={styles.container} onPress={onClick}>
+        <TouchableOpacity style={styles.container} onPress={()=>onClick('test')}>
         <ImageBackground
           style={styles.backgroundStyle}
           source={background}
