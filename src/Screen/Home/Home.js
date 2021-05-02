@@ -1,15 +1,11 @@
 import React from "react";
 import {
-  View,
-  Text,
   StatusBar,
   ScrollView,
-  TouchableOpacity,
-  StyleSheet,
-  FlatList,
 } from "react-native";
 import styles from './Home.style'
-import LevelItem from '../../Component/LevelItem'
+import Welcome from './Welcome'
+import LevelList from './LevelLists'
 
 const COLLEGE_DATA = [
   {
@@ -70,45 +66,12 @@ const SUP_DATA = [
 
 export default function Acceuil({ navigation }) {
   return (
-    <ScrollView style={{backgroundColor: 'white'}}> 
+    <ScrollView style={styles.container}> 
       <StatusBar backgroundColor="#ffc814" barStyle="dark-content" />
-
-      <Text style={styles.title}> Collége </Text>
-      <FlatList
-        style={styles.list}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={COLLEGE_DATA}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <LevelItem background={item.background} title={item.title} onClick={() => navigation.navigate("LevelDetails", { level: item })}/>
-        )}
-      />
-      <Text style={styles.title}> Lycée </Text>
-      <FlatList
-        style={styles.list}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={LYCEE_DATA}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <LevelItem background={item.background} title={item.title} onClick={() => navigation.navigate("LevelDetails", { level: item })}/>
-
-        )}
-      />
-
-    <Text style={styles.title}> Etude Supérieur </Text>
-      <FlatList
-        style={styles.list}
-        horizontal
-        showsHorizontalScrollIndicator={false}
-        data={SUP_DATA}
-        keyExtractor={(item) => item.id}
-        renderItem={({ item }) => (
-          <LevelItem background={item.background} title={item.title} onClick={() => navigation.navigate("LevelDetails", { level: item })}/>
-
-        )}
-      />
+      <Welcome name="moad"/>
+      <LevelList title="Collége" DATA={COLLEGE_DATA} click={() => navigation.navigate("LevelDetails", { level: item })}/>
+      <LevelList title="Lycée" DATA={LYCEE_DATA} click={() => navigation.navigate("LevelDetails", { level: item })}/>
+      <LevelList title="Etude Supérieur" DATA={SUP_DATA} click={() => navigation.navigate("LevelDetails", { level: item })}/>
  
     </ScrollView>
   );
