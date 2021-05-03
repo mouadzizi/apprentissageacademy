@@ -28,9 +28,8 @@ export default function LevelDetails({ navigation, route }) {
         return Promise.all(items.prefixes)
     }
     return (
-        <View style={{ borderWidth: 1, flex: 1 }} >
+        <View style={{ borderWidth: 1, flex: 1}} >
             <FlatList
-                style={{ flex: 1 }}
                 numColumns={2}
                 data={list}
                 ListEmptyComponent={<Text> Empty </Text>}
@@ -49,8 +48,6 @@ export default function LevelDetails({ navigation, route }) {
 
 const styles = StyleSheet.create({
     ViewConatiner: {
-        flexDirection: 'row',
-        justifyContent: 'space-around',
         marginVertical: 10
 
     },

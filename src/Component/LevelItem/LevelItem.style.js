@@ -1,16 +1,8 @@
 import { StyleSheet } from 'react-native';
 
 export default StyleSheet.create({
-  container: {
-    flex: 1,
-    flexDirection: 'column',
-    width: 230,
-    height: 270,
-    marginHorizontal: 20,
-    borderColor: 'rgba(52, 152, 219,0.4)',
-    borderWidth: 1,
-    borderRadius: 15,
-  },
+
+  
   backgroundStyle: {
     width: '100%',
     height: '100%',
