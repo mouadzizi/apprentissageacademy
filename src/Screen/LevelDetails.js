@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { ScrollView, StyleSheet, View, FlatList, Text } from 'react-native'
+import { StyleSheet, View, FlatList, Text } from 'react-native'
 
-import Cmp from '../Component/cmp';
+import Subject from '../Component/Subject';
 import { st } from '../API/firebase'
+
+import Empty from '../SVG/Empty'
 
 export default function LevelDetails({ navigation, route }) {
     const [list, setList] = useState([])
@@ -27,17 +29,21 @@ export default function LevelDetails({ navigation, route }) {
 
         return Promise.all(items.prefixes)
     }
+    console.log(list)
     return (
-        <View style={{ borderWidth: 1, flex: 1}} >
+        <View style={{ flex: 1}} >
             <FlatList
+                style={{backgroundColor: 'white'}}
                 numColumns={2}
                 data={list}
-                ListEmptyComponent={<Text> Empty </Text>}
+                ListEmptyComponent={
+                <View style={styles.emptyContainer}>
+                <Empty/>
+                </View>
+                }
                 keyExtractor={(item, index) => index.toString()}
                 renderItem={(item) => (
-                    <View style={styles.ViewConatiner}>
-                        <Cmp title={item.item.title} clickHandler={() => navigation.push('TabTopNav',{path:item.item.fullPath})} />
-                    </View>
+                        <Subject title={item.item.title} onClick={() => navigation.push('TabTopNav',{path:item.item.fullPath})}/>
                 )
                 }
             />
@@ -49,6 +55,9 @@ export default function LevelDetails({ navigation, route }) {
 const styles = StyleSheet.create({
     ViewConatiner: {
         marginVertical: 10
-
     },
+    emptyContainer:{
+        alignItems: 'center',
+        marginVertical: '50%'
+    }
 });
