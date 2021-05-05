@@ -1,5 +1,5 @@
 import React from 'react'
-import { FlatList, Text, View} from 'react-native'
+import { FlatList, Text, View,TouchableOpacity,ImageBackground,Image} from 'react-native'
 import styles from './LevelList.style'
 import LevelItem from '../../../Component/LevelItem'
 import stylesI from '../../../Component/LevelItem/LevelItem.style';
@@ -40,7 +40,6 @@ export default function LevelList({DATA, title, click}) {
             </View>
           </ImageBackground>
         </TouchableOpacity>
-
         )}
       />
 
