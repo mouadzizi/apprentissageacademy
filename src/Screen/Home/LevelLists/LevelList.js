@@ -1,7 +1,7 @@
 import React from 'react'
-import { FlatList, Text, View,TouchableOpacity,ImageBackground,Image} from 'react-native'
-import styles from './LevelList.style'
+import { FlatList, Text, View, TouchableOpacity, ImageBackground, Image} from 'react-native'
 import LevelItem from '../../../Component/LevelItem'
+import styles from './LevelList.style'
 import stylesI from '../../../Component/LevelItem/LevelItem.style';
 
 const logo= require('../../../../assets/icon.png');
@@ -18,27 +18,8 @@ export default function LevelList({DATA, title, click}) {
         data={DATA}
         keyExtractor={(item) => item.id}
         renderItem={({ item }) => (
-          <TouchableOpacity style={stylesI.container} onPress={()=>click(item)}>
-          <ImageBackground
-            style={stylesI.backgroundStyle}
-            source={item.background}
-            imageStyle={{
-              resizeMode: 'cover',
-              borderRadius: 15,
-            }}
-          >
-            <View style={stylesI.containerImage}></View>
-    
-            <View style={stylesI.containerInfo}>
-              <View style={stylesI.containerLogo}>
-                  <Image source={logo} style={stylesI.brandLogo}/>
-              </View>
-    
-              <View style={stylesI.containerDetails}>
-                <Text style={stylesI.title}>{item.title}</Text>
-              </View>
-            </View>
-          </ImageBackground>
+          <TouchableOpacity style={styles.touchable} onPress={()=>click(item)}>
+          <LevelItem background={item.background} title={item.title}/>
         </TouchableOpacity>
         )}
       />

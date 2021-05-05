@@ -5,10 +5,10 @@ import { createStackNavigator } from '@react-navigation/stack';
 
 //Pages of Authentification
 
-import Intro from '../Screen/Intro';
-import SignIn from '../Screen/SignIn';
-import SignInEmail from '../Screen/SignInEmail';
-import SignUp from '../Screen/SignUp';
+import Intro from '../Screen/OnBoarding/Intro';
+import SignIn from '../Screen/OnBoarding/SignIn';
+import SignInEmail from '../Screen/OnBoarding/SignInEmail';
+import SignUp from '../Screen/OnBoarding/SignUp';
 
 import Privacy from '../Screen/Privacy';
 import Home from './bottomStack'

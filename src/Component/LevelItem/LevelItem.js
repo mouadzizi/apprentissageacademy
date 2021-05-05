@@ -4,9 +4,8 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import styles from './LevelItem.style';
 
 const logo= require('../../../assets/icon.png');
-export default function Level({background, title, onClick}) {
+export default function Level({background, title}) {
     return (
-        <TouchableOpacity style={styles.container} onPress={()=>onClick('test')}>
         <ImageBackground
           style={styles.backgroundStyle}
           source={background}
@@ -27,6 +26,5 @@ export default function Level({background, title, onClick}) {
             </View>
           </View>
         </ImageBackground>
-      </TouchableOpacity>
     )
 }

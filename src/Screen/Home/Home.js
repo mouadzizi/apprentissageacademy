@@ -72,7 +72,6 @@ export default function Acceuil({ navigation }) {
       <LevelList title="Collége" DATA={COLLEGE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Lycée" DATA={LYCEE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Etude Supérieur" DATA={SUP_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
- 
     </ScrollView>
   );
 }
