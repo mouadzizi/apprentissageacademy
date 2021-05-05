@@ -1,45 +1,40 @@
-import React, {useState} from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert } from 'react-native'
+import React, { useState } from 'react'
+import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert, ActivityIndicator } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider, Input } from 'react-native-elements';
-import * as Animatable from 'react-native-animatable';
+import { signIn } from '../../../API/APIFunctions'
 import {EvilIcons} from 'react-native-vector-icons'
-
-//Api functions
-import { signUp } from '../API/APIFunctions'
-import { ActivityIndicator } from 'react-native';
+import * as Animatable from 'react-native-animatable';
 
 const heightScreen = Dimensions.get("window").height;
 
-export default function SignUp({ navigation }) {
+export default function SignInEmail({ navigation }) {
 
-    const [User, setUser] = useState({
+    const [data, setData] = useState({
         email: '',
-        password: '',
-        confirmPassword: ''
+        password: ''
     })
     const [loading, setLoading] = useState(false)
     const [errMes, setErrMes] = useState('')
+    const input = React.useRef();
+    const signInAction = () => {
+        setLoading(true)
+        signIn(data.email.trim(), data.password.trim()).then(user => {
+            if (user != null) navigation.replace('Home')
 
-    const signUpAction = async () => {
-        setLoading(true);
-        if(User.password.match(User.confirmPassword)){
-            await signUp(User.email.trim(), User.password.trim()).then(user => {
-                console.log(user);
-                setLoading(false)
-                navigation.replace('Home')
-            })
-                .catch(err => {    
-                    setErrMes("Email pas correct")
-                    setLoading(false)
-                })
-
-        }
-       else {
-           setErrMes("Les mots de pass sont pas identique")
-           setLoading(false)
-       }
+        }).catch(err => {
+            setLoading(false)
+            switch (err.code) {
+                case 'auth/invalid-email':
+                    setErrMes("Votre Email est inccorect")
+                    break;
+                case 'auth/wrong-password':
+                    setErrMes("Mot de Pass ou bien Email est incorrect")
+                    break;
+            }
+        })
     }
+
     return (
         <View
             style={styles.cotainer}>
@@ -50,12 +45,11 @@ export default function SignUp({ navigation }) {
                     <EvilIcons name="arrow-left" size={50} color="white"/>
                 </TouchableOpacity>
 
-            <View
-                style={styles.headerContainer}>
+            <View style={styles.headerContainer}>
                 <View
                     style={styles.header}>
 
-                    <Text style={styles.headline}>S'inscrire</Text>
+                    <Text style={styles.headline}>S'identifier</Text>
                     <Text style={styles.subline}>Apprentissage academy, votre academy</Text>
 
                 </View>
@@ -64,14 +58,15 @@ export default function SignUp({ navigation }) {
             <View
                 style={styles.body}>
 
-                    <Text
-                    style={styles.errorMessage}> {errMes} </Text>
+                <Text
+                style={styles.errorMessage}>{errMes}</Text>
                 <Animatable.View
                     animation="fadeInUp"
-                    duration={1500}>
+                    duration={2000}>
 
 
                     <Input
+                        onChangeText={(e) => setData({ ...data, email: e })}
                         placeholder='votre-mail@gmail.com'
                         label='E-mail'
                         leftIcon={
@@ -81,25 +76,14 @@ export default function SignUp({ navigation }) {
                                 color='#ffc814'
                             />
                         }
-                        onChangeText={(e) => setUser({ ...User, email: e })}
+                        keyboardType='email-address'
+                        returnKeyType='next'
+                        onSubmitEditing={() => input.current.focus()}
                     />
 
                     <Input
+                        onChangeText={(e) => setData({ ...data, password: e })}
                         label='Mot de passe'
-                        placeholder='un grand secret'
-                        secureTextEntry={true}
-                        leftIcon={
-                            <Icon
-                                name='lock-open-outline'
-                                size={20}
-                                color='#ffc814'
-                            />
-                        }
-                        onChangeText={(e) => setUser({ ...User, password: e })}
-                    />
-
-                    <Input
-                        label='Confirmer votre Mot de passe'
                         placeholder='un grand secret'
                         secureTextEntry={true}
                         errorStyle={{ color: 'red' }}
@@ -110,27 +94,31 @@ export default function SignUp({ navigation }) {
                                 color='#ffc814'
                             />
                         }
-                        onChangeText={(e) => setUser({ ...User, confirmPassword: e })}
+                        autoCapitalize='none'
+                        onSubmitEditing={() => signInAction()}
+                        ref={input}
+
                     />
 
+                    <Text
+                        onPress={() => Alert.alert('Mot de pass oublie', 'fonction will be availble on production')}
+                        style={styles.captionImportant}> Mot de passe oublié </Text>
                 </Animatable.View>
+
 
                 <Divider style={{ marginVertical: 15 }} />
 
                 <TouchableOpacity
+                    onPress={signInAction}
                     style={styles.btn}
-                    onPress={signUpAction}
-                    disabled={!User.email || !User.password || !User.confirmPassword }
-                    >
-                    { loading ? <ActivityIndicator style={styles.indicator} color='white' size='large'  /> : null  }
+
+                    disabled={!data.email || !data.password || loading}>
+                    {loading ? <ActivityIndicator style={styles.indicator} color='white' size='large' animating /> : null}
                     <Text
-                        style={styles.btnText}>Crée compte</Text>
+                        style={styles.btnText}>S'identifier</Text>
                 </TouchableOpacity>
-
-                <Text style={styles.caption}>Avez vous déjà un compte ? <Text onPress={() => navigation.replace('SignInEmail')} style={{ color: '#ffc814' }}> S'identifier</Text></Text>
-                <Text></Text>
-
-                <Text style={styles.caption}>en créant un compte avec nous, vous acceptez notre <Text onPress={() => navigation.navigate('politique de confidentialité')} style={{ color: '#ffc814' }}> politique de confidentialité</Text></Text>
+  
+                <Text style={styles.caption}>Avez vous avez pas un compte ? <Text onPress={() => navigation.replace('SignUp')} style={{ color: '#ffc814' }}> S'inscrire</Text></Text>
 
             </View>
 
@@ -142,20 +130,19 @@ const styles = StyleSheet.create({
     cotainer: {
         backgroundColor: '#ffc814'
     },
-    headerContainer: {
-        backgroundColor: 'white'
+    headerContainer:{
+        backgroundColor: 'white',
     },
     header: {
         backgroundColor: '#ffc814',
-        height: heightScreen * 0.23,
+        height: heightScreen*0.23,
         borderBottomLeftRadius: 100,
         paddingLeft: 55,
-        paddingTop: 50,
+        paddingTop: 70,
 
     },
     headline: {
         fontSize: 35,
-        marginTop: 15,
         fontWeight: 'bold',
         color: 'white'
     },
@@ -169,10 +156,10 @@ const styles = StyleSheet.create({
         borderTopEndRadius: 75,
         padding: 20,
     },
-    errorMessage: {
+    errorMessage:{
         color: 'red',
         textAlign: 'center'
-    },
+    },  
     btn: {
         marginVertical: 25,
         backgroundColor: '#ffc814',
@@ -196,10 +183,10 @@ const styles = StyleSheet.create({
         textAlign: 'center',
         color: '#c2c2c2'
     },
-    indicator:{
-        position:'absolute',
-        top:'10%',
-        left:'2%'
+    indicator: {
+        position: 'absolute',
+        top: '10%',
+        left: '2%'
     },
     FAB:{
         position : 'absolute',

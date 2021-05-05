@@ -3,7 +3,7 @@ import { View, Text, Dimensions, Image, StyleSheet, TouchableOpacity, Alert, Int
 import { Button, Divider } from 'react-native-elements';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import * as Animatable from 'react-native-animatable';
-import { signInWithFacebook } from '../API/APIFunctions'
+import { signInWithFacebook } from '../../../API/APIFunctions'
 import * as Updates from 'expo-updates';
 import * as Facebook from 'expo-facebook';
 
@@ -54,7 +54,7 @@ export default function SignIn({ navigation }) {
             <View>
                 <Animatable.Image
                     animation="pulse" iterationCount={5}
-                    source={require('../../assets/icon.png')}
+                    source={require('../../../../assets/icon.png')}
                     resizeMode='contain'
                     style={styles.imageIntro}
                 />
