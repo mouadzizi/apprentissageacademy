@@ -24,7 +24,7 @@ export default function SignIn({ navigation }) {
         setLoading(true);
         await signInWithFacebook().then(facebookUser => {
             if (facebookUser) {
-                alert('welcome'+JSON.stringify(facebookUser) );
+                navigation.replace('Home')
                 setLoading(false);
             }
             else setLoading(false)
@@ -94,8 +94,7 @@ export default function SignIn({ navigation }) {
                 <TouchableOpacity
                     style={styles.signUpBtn}
                     onPress={() =>
-                        //  navigation.navigate('SignUp')
-                        Facebook.logOutAsync().then(()=>alert('loged Out'))
+                         navigation.navigate('SignUp')
                     }>
                     <Text
                         style={styles.signUnBtnText}>S'inscrire</Text>

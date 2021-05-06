@@ -11,12 +11,14 @@ import styles from './SignUp.style';
 //Api functions
 import { signUp } from '../../../API/APIFunctions'
 import { ActivityIndicator } from 'react-native';
+import { KeyboardAvoidingView } from 'react-native';
 
 const heightScreen = Dimensions.get("window").height;
 
 export default function SignUp({ navigation }) {
 
     const [User, setUser] = useState({
+        username:'',
         email: '',
         password: '',
         confirmPassword: ''
@@ -27,10 +29,12 @@ export default function SignUp({ navigation }) {
     const signUpAction = async () => {
         setLoading(true);
         if(User.password.match(User.confirmPassword)){
-            await signUp(User.email.trim(), User.password.trim()).then(user => {
-                console.log(user);
+            await signUp(User.email.trim(), User.password.trim()).then( async user => {
+             user.user.updateProfile({displayName:User.username}).then(()=> {
                 setLoading(false)
                 navigation.replace('Home')
+             })
+         
             })
                 .catch(err => {    
                     setErrMes("Votre e-mail est pas correct")
@@ -44,7 +48,7 @@ export default function SignUp({ navigation }) {
        }
     }
     return (
-        <View
+        <ScrollView 
             style={styles.cotainer}>
 
                 <TouchableOpacity
@@ -52,7 +56,7 @@ export default function SignUp({ navigation }) {
                 onPress={()=> navigation.navigate('SignIn')}>
                     <EvilIcons name="arrow-left" size={50} color="white"/>
                 </TouchableOpacity>
-
+            
             <View
                 style={styles.headerContainer}>
                 <View
@@ -73,7 +77,19 @@ export default function SignUp({ navigation }) {
                     animation="fadeInUp"
                     duration={1500}>
 
-
+                    
+                    <Input
+                        placeholder="Nom et prénom"
+                        label="Nom et prénom"
+                        leftIcon={
+                            <Icon
+                                name='card-account-details'
+                                size={20}
+                                color='#ffc814'
+                            />
+                        }
+                        onChangeText={(e) => setUser({ ...User, username: e })}
+                    />
                     <Input
                         placeholder='votre-mail@gmail.com'
                         label='E-mail'
@@ -118,7 +134,7 @@ export default function SignUp({ navigation }) {
 
                 </Animatable.View>
 
-                <Divider style={{ marginVertical: 15 }} />
+                <Divider style={{ marginVertical: 9 }} />
 
                 <TouchableOpacity
                     style={styles.btn}
@@ -137,6 +153,6 @@ export default function SignUp({ navigation }) {
 
             </View>
 
-        </View>
+        </ScrollView>
     )
 }

@@ -2,6 +2,7 @@ import {StyleSheet} from 'react-native';
 
 export default StyleSheet.create({
     cotainer: {
+        flex:1,
         backgroundColor: '#ffc814'
     },
     headerContainer: {
@@ -33,7 +34,7 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     btn: {
-        marginVertical: 25,
+        marginBottom:15,
         backgroundColor: '#ffc814',
         width: '60%',
         elevation: 10,
@@ -53,7 +54,7 @@ export default StyleSheet.create({
     },
     caption: {
         textAlign: 'center',
-        color: '#c2c2c2'
+        color: '#c2c2c2',
     },
     indicator:{
         position:'absolute',

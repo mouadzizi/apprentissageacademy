@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import {
   StatusBar,
   ScrollView,
@@ -6,6 +6,7 @@ import {
 import styles from './Home.style'
 import Welcome from './Welcome'
 import LevelList from './LevelLists'
+import {auth} from '../../API/firebase'
 
 const COLLEGE_DATA = [
   {
@@ -16,7 +17,7 @@ const COLLEGE_DATA = [
   },
   {
     id: "2c",
-    title: "2éme Année",
+    title: "2éme Anneé",
     path: "Collége",
     background: require('../../../assets/college2.jpeg'),
   },
@@ -65,10 +66,14 @@ const SUP_DATA = [
 ];
 
 export default function Acceuil({ navigation }) {
+  const {currentUser:user}=auth;
+  useEffect(() => {
+      
+  }, [])
   return (
     <ScrollView style={styles.container}> 
       <StatusBar backgroundColor="#ffc814" barStyle="dark-content" />
-      <Welcome name="MOAD"/>
+      <Welcome name={user.displayName}  />
       <LevelList title="Collége" DATA={COLLEGE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Lycée" DATA={LYCEE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Etude Supérieur" DATA={SUP_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>

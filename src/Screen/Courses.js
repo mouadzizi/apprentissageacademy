@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { View, Text, ActivityIndicator, StyleSheet } from 'react-native'
+import { View, Text, ActivityIndicator, StyleSheet,InteractionManager } from 'react-native'
 import { ListItem, Icon } from 'react-native-elements';
 import { st } from '../API/firebase'
 
@@ -8,11 +8,13 @@ export default function Courses({ path,nav }) {
   const [loading, setLoading] = useState(false)
 
   useEffect(() => {
-    setLoading(true)
-    getCourses().then(files => {
-      setList(files.filter(f => f.contentType == 'application/pdf'))
-      setLoading(false)
-    })
+    InteractionManager.runAfterInteractions(()=>{ 
+      setLoading(true)
+      getCourses().then(files => {
+        setList(files.filter(f => f.contentType == 'application/pdf'))
+        setLoading(false)
+      })
+     })
   }, [])
 
   const getCourses = async () => {
