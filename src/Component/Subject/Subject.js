@@ -14,7 +14,7 @@ export default function Subject({title, onClick}) {
         style={styles.container}
         onPress={onClick}>
             <Text style={styles.title}>{title}</Text>
-            <Geo />
+            <Math />
         </TouchableOpacity>
     )
 }
