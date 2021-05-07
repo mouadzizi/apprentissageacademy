@@ -1,4 +1,4 @@
-import React,{useEffect} from "react";
+import React from "react";
 import {
   StatusBar,
   ScrollView,
@@ -67,13 +67,11 @@ const SUP_DATA = [
 
 export default function Acceuil({ navigation }) {
   const {currentUser:user}=auth;
-  useEffect(() => {
-      
-  }, [])
+
   return (
     <ScrollView style={styles.container}> 
       <StatusBar backgroundColor="#ffc814" barStyle="dark-content" />
-      <Welcome name={user.displayName}  />
+      <Welcome name={user.displayName.toUpperCase()}  />
       <LevelList title="Collége" DATA={COLLEGE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Lycée" DATA={LYCEE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Etude Supérieur" DATA={SUP_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>

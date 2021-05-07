@@ -7,8 +7,12 @@ import Physics from '../../SVG/Physics'
 import Geo from '../../SVG/Geo'
 import History from '../../SVG/History'
 import SVT from '../../SVG/SVT'
+import Language from '../../SVG/Language'
+
+import DefaultSubject from '../../SVG/defaultSubject'
 
 export default function Subject({ title, onClick }) {
+
     const RenderIcon = () => {
         switch (title) {
             case 'Mathématiques':
@@ -19,12 +23,16 @@ export default function Subject({ title, onClick }) {
                 return <History/>
             case 'Physiques et chimie':
                 return <Physics/>
-            case 'Sciences de la vie et de la terre':
-                return <SVT/>
+                case 'Sciences de la vie et de la terre':
+                    return <SVT/>
+            case 'Arabe':
+                return <Language/>
+            case 'Francais':
+                    return <Language/>
+            case 'Anglais':
+                return <Language/>
             default:
-                return <Geo/>
-
-
+                return <DefaultSubject/>
         }
     }
     return (

@@ -30,7 +30,7 @@ export default function HomeStack() {
         options={{
           headerTitleAlign: "center",
           headerTintColor: "white",
-          title: "sujets",
+          title: "Sujets",
           headerStyle: {
             backgroundColor: "#ffc814",
           },
@@ -42,7 +42,7 @@ export default function HomeStack() {
         options={{
           headerTitleAlign: "center",
           headerTintColor: "white",
-          title: "PDF & Video",
+          title: "Les cours",
           headerStyle: {
             backgroundColor: "#ffc814",
           },

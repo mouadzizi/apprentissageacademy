@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import { View, Text, StyleSheet, ScrollView, Dimensions, TouchableOpacity, Alert } from 'react-native'
+import { View, Text, ScrollView, Dimensions, TouchableOpacity } from 'react-native'
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import { Divider, Input } from 'react-native-elements';
 import * as Animatable from 'react-native-animatable';
@@ -11,7 +11,6 @@ import styles from './SignUp.style';
 //Api functions
 import { signUp } from '../../../API/APIFunctions'
 import { ActivityIndicator } from 'react-native';
-import { KeyboardAvoidingView } from 'react-native';
 
 const heightScreen = Dimensions.get("window").height;
 
