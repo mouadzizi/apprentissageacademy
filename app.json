@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "apprentissageacademy",
-    "slug": "apprentissageacademy",
+    "name": "ApprentissageAcademy",
+    "slug": "Apprentissageacademy",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -20,18 +20,20 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "buildNumber": "1.0.0"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "package": "com.us.apprentissageacademy"
+      "package": "com.us.apprentissageacademy",
+      "versionCode": 1
     },
     "web": {
       "favicon": "./assets/favicon.png"
     },
-    "description": ""
+    "description": "Apprentissage Academy"
   }
 }
