@@ -26,7 +26,9 @@
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "backgroundColor": "#FFFFFF",
+        "permissions": [
+        ]
       },
       "package": "com.us.apprentissageacademy",
       "versionCode": 1
