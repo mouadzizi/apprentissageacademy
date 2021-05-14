@@ -1,11 +1,14 @@
 import React from "react";
-
 import { createStackNavigator } from "@react-navigation/stack";
+import {COLORS} from '../utils/GlobalStyle'
 
 //Pages of Authentification
 import Acceuil from "../Screen/Home";
 import LevelDetails from "../Screen/LevelDetails";
 import TabTopNav from "../Navigation/TabTopNav";
+
+import PdfView from "../Screen/PdfView";
+import VideoView from "../Screen/VideoView";
 
 export default function HomeStack() {
   const Stack = createStackNavigator();
@@ -20,8 +23,9 @@ export default function HomeStack() {
           headerTintColor: "white",
           title: "Apprentissage Academy",
           headerStyle: {
-            backgroundColor: "#ffc814",
+            backgroundColor: COLORS.primary,
           },
+          headerLeft: () => null,
         }}
       />
       <Stack.Screen
@@ -32,7 +36,7 @@ export default function HomeStack() {
           headerTintColor: "white",
           title: "Sujets",
           headerStyle: {
-            backgroundColor: "#ffc814",
+            backgroundColor: COLORS.primary,
           },
         }}
       />
@@ -44,9 +48,20 @@ export default function HomeStack() {
           headerTintColor: "white",
           title: "Les cours",
           headerStyle: {
-            backgroundColor: "#ffc814",
+            backgroundColor: COLORS.primary,
           },
         }}
+      />
+
+      <Stack.Screen
+        name="PdfView"
+        component={PdfView}
+        options={{ headerShown: false }}
+      />
+      <Stack.Screen
+        name="VideoView"
+        component={VideoView}
+        options={{ headerShown: false }}
       />
     </Stack.Navigator>
   );

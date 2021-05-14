@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { View, Text, ActivityIndicator, StyleSheet,InteractionManager } from 'react-native'
 import { ListItem, Icon } from 'react-native-elements';
-import { st } from '../API/firebase'
+import { st } from '../../API/firebase'
 
 export default function Courses({ path,nav }) {
   const [list, setList] = useState([])

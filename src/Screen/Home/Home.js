@@ -7,6 +7,7 @@ import styles from './Home.style'
 import Welcome from './Welcome'
 import LevelList from './LevelLists'
 import {auth} from '../../API/firebase'
+import { COLORS } from "../../utils/GlobalStyle";
 
 const COLLEGE_DATA = [
   {
@@ -69,8 +70,8 @@ export default function Acceuil({ navigation }) {
   const {currentUser:user}=auth;
 
   return (
-    <ScrollView style={styles.container}> 
-      <StatusBar backgroundColor="#ffc814" barStyle="dark-content" />
+    <ScrollView style={styles.container}>  
+      <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
       <Welcome name={user.displayName.toUpperCase()}  />
       <LevelList title="Collége" DATA={COLLEGE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>
       <LevelList title="Lycée" DATA={LYCEE_DATA} click={(item) => navigation.navigate("LevelDetails", { level: item })}/>

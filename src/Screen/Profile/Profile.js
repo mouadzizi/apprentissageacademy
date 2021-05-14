@@ -2,7 +2,7 @@ import React from "react";
 import { View, Text, StatusBar, TouchableOpacity } from "react-native";
 import { Avatar, Divider, Input} from 'react-native-elements';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-
+import {COLORS} from '../../utils/GlobalStyle'
 import styles from "./Profile.style";
 
 import { auth } from "../../API/firebase";
@@ -20,7 +20,7 @@ export default function Profile({ navigation }) {
   return (
       
     <View>
-      <StatusBar backgroundColor="#ffc814" />
+      <StatusBar backgroundColor={COLORS.primary} barStyle="light-content" />
       <Avatar rounded title={TwoLettersName} size={100} backgroundColor="#ffc814" s
         containerStyle={{alignSelf: 'center', margin: 20}}/>
 

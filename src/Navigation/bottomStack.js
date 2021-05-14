@@ -2,8 +2,8 @@ import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import Accueil from "./homeStack";
-import Profile from "../Screen/Profile";
-
+import Profile from "./profileStack"
+import {COLORS} from '../utils/GlobalStyle'
 export default function bottomStack() {
   const Tab = createBottomTabNavigator();
 
@@ -22,7 +22,7 @@ export default function bottomStack() {
         },
       })}
       tabBarOptions={{
-        activeTintColor: "#ffc814",
+        activeTintColor: COLORS.primary,
         inactiveTintColor: "gray",
       }}
     >

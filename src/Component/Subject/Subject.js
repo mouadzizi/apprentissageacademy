@@ -8,6 +8,8 @@ import Geo from '../../SVG/Geo'
 import History from '../../SVG/History'
 import SVT from '../../SVG/SVT'
 import Language from '../../SVG/Language'
+import Translation from '../../SVG/Translation'
+import Francais from '../../SVG/Francais'
 
 import DefaultSubject from '../../SVG/defaultSubject'
 
@@ -26,9 +28,9 @@ export default function Subject({ title, onClick }) {
                 case 'Sciences de la vie et de la terre':
                     return <SVT/>
             case 'Arabe':
-                return <Language/>
+                return <Translation/>
             case 'Francais':
-                    return <Language/>
+                    return <Francais/>
             case 'Anglais':
                 return <Language/>
             default:
