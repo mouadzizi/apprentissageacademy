@@ -29,6 +29,9 @@ export default function SignInEmail({ navigation }) {
                     setErrMes("Votre Email est inccorect")
                     break;
                 case 'auth/wrong-password':
+                    setErrMes("Mot de Pass est incorrect")
+                    break;
+                case 'auth/user-not-found':
                     setErrMes("Mot de Pass ou bien Email est incorrect")
                     break;
             }
