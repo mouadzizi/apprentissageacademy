@@ -5,7 +5,7 @@ const heightScreen = Dimensions.get("window").height;
 
 export default StyleSheet.create({
     containerGlobal: {
-      height: heightScreen,
+      height: '200%',
       width: '100%',
       padding: 20,
       backgroundColor: 'white'

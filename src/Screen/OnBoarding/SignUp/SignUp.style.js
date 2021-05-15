@@ -1,26 +1,32 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
+import {COLORS} from '../../../utils/GlobalStyle'
+
+const heightScreen = Dimensions.get("window").height;
 
 export default StyleSheet.create({
     cotainer: {
-        flex:1,
-        backgroundColor: '#ffc814'
+        backgroundColor: 'white',
+        height: '200%'
     },
     headerContainer: {
         backgroundColor: 'white'
     },
     header: {
-        backgroundColor: '#ffc814',
+        backgroundColor: COLORS.primary,
         borderBottomLeftRadius: 100,
+        height: heightScreen*0.25,
         paddingLeft: 55,
-        paddingTop: 50,
+        paddingTop: 70,
     },
     headline: {
-        fontSize: 35,
-        marginTop: 15,
+        marginTop: 45,
+        fontSize: 25,
         fontWeight: 'bold',
-        color: 'white'
+        color: 'white',
+        fontFamily: 'monospace'
     },
     subline: {
+        marginTop: 5,
         fontWeight: 'bold',
         color: 'black'
     },
@@ -34,8 +40,18 @@ export default StyleSheet.create({
         textAlign: 'center'
     },
     btn: {
-        marginBottom:15,
-        backgroundColor: '#ffc814',
+        marginVertical: 25,
+        backgroundColor: COLORS.primary,
+        width: '60%',
+        elevation: 10,
+        alignSelf: 'center',
+        padding: 10,
+        borderRadius: 15
+    },
+
+    btnDisable: {
+        marginVertical: 25,
+        backgroundColor: COLORS.caption,
         width: '60%',
         elevation: 10,
         alignSelf: 'center',
@@ -49,7 +65,7 @@ export default StyleSheet.create({
         fontWeight: 'bold'
     },
     captionImportant: {
-        color: '#ffc814',
+        color: COLORS.primary,
         textAlign: 'right',
     },
     caption: {

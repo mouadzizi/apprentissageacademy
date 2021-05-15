@@ -5,7 +5,7 @@ const heightScreen = Dimensions.get("window").height;
 
 export default StyleSheet.create({
     cotainer: {
-        backgroundColor: COLORS.primary
+        backgroundColor: COLORS.primary,
     },
     headerContainer:{
         backgroundColor: 'white',
@@ -18,19 +18,20 @@ export default StyleSheet.create({
         paddingTop: 70,
     },
     headline: {
-        marginTop: 15,
+        marginTop: 45,
         fontSize: 25,
         fontWeight: 'bold',
         color: 'white',
         fontFamily: 'monospace'
     },
     subline: {
+        marginTop: 5,
         fontWeight: 'bold',
         color: 'black'
     },
     body: {
-        backgroundColor: '#fff',
-        height: heightScreen * 0.75,
+        backgroundColor: 'white',
+        height: heightScreen,
         borderTopEndRadius: 75,
         padding: 20,
     },

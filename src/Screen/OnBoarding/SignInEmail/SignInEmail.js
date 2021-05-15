@@ -37,11 +37,9 @@ export default function SignInEmail({ navigation }) {
 
   const signInAction = () => {
     setLoading(true);
-    signIn(data.email.trim(), data.password.trim())
-      .then((user) => {
-        if (user != null) navigation.navigation("Home");
-      })
-      .catch((err) => {
+    signIn(data.email.trim(), data.password.trim()).then((user) => {
+      if (user != null) navigation.navigation("Home");
+    }).catch((err) => {
         setLoading(false);
         switch (err.code) {
           case "auth/invalid-email":
@@ -102,7 +100,7 @@ export default function SignInEmail({ navigation }) {
         <Divider style={{ marginVertical: 15 }} />
 
         <TouchableOpacity
-          onPress={()=> signInAction()}
+          onPress={signInAction}
           style={disable ? styles.btnDisable : styles.btn}
           disabled={disable}
         >

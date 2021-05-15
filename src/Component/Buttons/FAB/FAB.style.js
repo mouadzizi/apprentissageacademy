@@ -3,8 +3,8 @@ import {StyleSheet} from 'react-native'
 export default StyleSheet.create({
     FAB:{
         position : 'absolute',
-        top: 20,
+        top: 50,
         left: 20,
-        zIndex: 1
+        zIndex: 1,
     }
 });
