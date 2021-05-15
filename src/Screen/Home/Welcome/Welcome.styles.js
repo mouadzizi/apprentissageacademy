@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native'
-
+import {COLORS} from '../../../utils/GlobalStyle'
 export default StyleSheet.create({
     container:{
         flex: 1,
@@ -15,12 +15,12 @@ export default StyleSheet.create({
     name:{
         fontWeight: 'bold',
         fontSize: 20,
-        color: '#ffc814'
+        color: COLORS.primary,
     },
     apprentissage:{
         fontWeight: 'bold',
         fontSize: 17,
-        color: '#ffc814'
+        color: COLORS.primary,
     },
     title2:{
         fontWeight: '300',
@@ -29,6 +29,6 @@ export default StyleSheet.create({
         marginBottom: 5,
     },
     subTitle:{
-        color: "#7f8fa6"
+        color: COLORS.dark[200]
     }
 });

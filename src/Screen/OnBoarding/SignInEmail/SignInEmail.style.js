@@ -5,16 +5,15 @@ const heightScreen = Dimensions.get("window").height;
 
 export default StyleSheet.create({
     cotainer: {
-        backgroundColor: 'white',
-        height: '200%'
+        backgroundColor: COLORS.primary,
     },
-    headerContainer: {
-        backgroundColor: 'white'
+    headerContainer:{
+        backgroundColor: 'white',
     },
     header: {
         backgroundColor: COLORS.primary,
-        borderBottomLeftRadius: 100,
         height: heightScreen*0.25,
+        borderBottomLeftRadius: 100,
         paddingLeft: 55,
         paddingTop: 70,
     },
@@ -31,14 +30,15 @@ export default StyleSheet.create({
         color: 'black'
     },
     body: {
-        backgroundColor: '#fff',
+        backgroundColor: 'white',
+        height: heightScreen,
         borderTopEndRadius: 75,
         padding: 20,
     },
-    errorMessage: {
+    errorMessage:{
         color: 'red',
         textAlign: 'center'
-    },
+    },  
     btn: {
         marginVertical: 25,
         backgroundColor: COLORS.primary,
@@ -48,7 +48,6 @@ export default StyleSheet.create({
         padding: 10,
         borderRadius: 15
     },
-
     btnDisable: {
         marginVertical: 25,
         backgroundColor: COLORS.caption,
@@ -70,17 +69,12 @@ export default StyleSheet.create({
     },
     caption: {
         textAlign: 'center',
-        color: '#c2c2c2',
+        color: COLORS.caption
     },
-    indicator:{
-        position:'absolute',
-        top:'10%',
-        left:'2%'
+    indicator: {
+        position: 'absolute',
+        top: '10%',
+        left: '2%'
     },
-    FAB:{
-        position : 'absolute',
-        top: 20,
-        left: 20,
-        zIndex: 1
-    }
-});
+
+})

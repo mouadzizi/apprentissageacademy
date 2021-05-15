@@ -3,8 +3,10 @@ import { View } from "react-native";
 import { Image } from "react-native";
 import Onboarding from "react-native-onboarding-swiper";
 import * as Animatable from "react-native-animatable";
-
+import {COLORS} from '../../../utils/GlobalStyle'
 import { auth } from "../../../API/firebase";
+import { LinearGradient } from 'expo-linear-gradient';
+
 
 import styles from "./Intro.style";
 export default function Intro({ navigation }) {
@@ -21,6 +23,7 @@ export default function Intro({ navigation }) {
       __unsub();
     };
   }, []);
+
   const animation = {
     0: {
       scale: 1,
@@ -49,7 +52,7 @@ export default function Intro({ navigation }) {
         easing="linear"
       >
         <Image
-          source={require("../../../../assets/logo.png")}
+          source={require("../../../../assets/icon.png")}
           style={styles.imageSt}
           resizeMode="contain"
         />
@@ -62,6 +65,8 @@ export default function Intro({ navigation }) {
 
       {!loading ? (
         <Onboarding
+        transitionAnimationDuration={300}
+        controlStatusBar={false}
           onSkip={() => {
             navigation.replace("SignIn");
           }}
@@ -72,42 +77,42 @@ export default function Intro({ navigation }) {
           skipLabel="Passer"
           pages={[
             {
-              backgroundColor: "#1a1a1a",
+              backgroundColor: COLORS.primary ,
               image: (
                 <Image
-                  source={require("../../../../assets/logo.png")}
+                  source={require("../../../../assets/icon.png")}
                   style={styles.ImageStSwiper}
                   resizeMode="contain"
                 />
               ),
-              title: "Onboarding",
-              subtitle: "Done with React Native Onboarding Swiper",
+              title: "Bienvenue",
+              subtitle: "Apprentissage Academy votre application pour une meilleure expérience d'apprentissage",
             },
 
             {
               backgroundColor: "#fff",
               image: (
                 <Image
-                  source={require("../../../../assets/slide1.png")}
+                  source={require("../../../../assets/icon2.png")}
                   style={styles.ImageStSwiper}
                   resizeMode="contain"
                 />
               ),
-              title: "Onboarding",
-              subtitle: "Done with React Native Onboarding Swiper",
+              title: "Efficacité & Rapidité",
+              subtitle: "vous pouvez accéder aux cours du collège à l'université en un seul clic",
             },
 
             {
-              backgroundColor: "#ffc814",
+              backgroundColor: "#343a40",
               image: (
                 <Image
-                  source={require("../../../../assets/slide2.png")}
+                  source={require("../../../../assets/icon3.png")}
                   style={styles.ImageStSwiper}
                   resizeMode="contain"
                 />
               ),
-              title: "Onboarding",
-              subtitle: "Done with React Native Onboarding Swiper",
+              title: "Nous sommes les meilleurs",
+              subtitle: "nous avons les meilleurs professeurs, vous donnant les meilleurs cours avec PDF et vidéo pour chaque cours",
             },
           ]}
         />

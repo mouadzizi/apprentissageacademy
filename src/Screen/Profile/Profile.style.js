@@ -1,12 +1,12 @@
 import {StyleSheet} from 'react-native';
-
+import {COLORS} from '../../utils/GlobalStyle'
 export default StyleSheet.create({
     container:{
         flex: 1,
     },
     btn: {
         marginBottom:15,
-        backgroundColor: '#ffc814',
+        backgroundColor: COLORS.primary,
         width: '60%',
         elevation: 10,
         alignSelf: 'center',

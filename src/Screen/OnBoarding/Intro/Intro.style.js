@@ -11,8 +11,8 @@ export default StyleSheet.create({
         height: 300,
     },
     ImageStSwiper:{
-        height: '100%',
-        width: '100%',
+        height: 350,
+        width: 350,
     },
     container: {
         flex: 1,
