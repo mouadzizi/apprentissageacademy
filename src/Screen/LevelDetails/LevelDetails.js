@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect,useLayoutEffect } from "react";
 import { StyleSheet, View, FlatList, Text } from "react-native";
 
 import Subject from "../../Component/Subject";
@@ -12,6 +12,12 @@ export default function LevelDetails({ navigation, route }) {
   const [loading, setLoading] = useState(false);
   const { level } = route.params;
 
+  useLayoutEffect(() => {
+    console.log(level);
+    navigation.setOptions({
+      title:level.title+' '+level.path
+    })
+  }, [navigation])
   useEffect(() => {
     setLoading(true);
     getItems().then((res) => {

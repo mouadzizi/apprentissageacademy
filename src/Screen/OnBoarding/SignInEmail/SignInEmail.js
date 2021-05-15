@@ -25,7 +25,7 @@ import * as Animatable from "react-native-animatable";
 import styles from "./SignInEmail.style";
 import {COLORS} from '../../../utils/GlobalStyle'
 
-export default function SignInEmail({ navigation }) {
+export default function SignInEmail({navigation}) {
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -34,13 +34,15 @@ export default function SignInEmail({ navigation }) {
   const [errMes, setErrMes] = useState("");
   const input = React.useRef();
   const disable = !data.email || !data.password || loading ;
+ 
 
   const signInAction = () => {
     setLoading(true);
     signIn(data.email.trim(), data.password.trim()).then((user) => {
-      if (user != null) navigation.navigation("Home");
+      if (user != null) navigation.replace("Home");
     }).catch((err) => {
         setLoading(false);
+        alert(err.message);
         switch (err.code) {
           case "auth/invalid-email":
             setErrMes("Votre Email est inccorect");
@@ -49,8 +51,7 @@ export default function SignInEmail({ navigation }) {
             setErrMes("Mot de Pass ou bien Email est incorrect");
             break;
           default :
-            setErrMes("il n'y a aucun utilisateur avec cette adresse e-mail");
-
+          setErrMes("il n'y a aucun utilisateur avec cette adresse e-mail");
         }
       });
   };
@@ -72,6 +73,7 @@ export default function SignInEmail({ navigation }) {
         <Text style={styles.errorMessage}>{errMes}</Text>
         <Animatable.View animation="fadeInUp" duration={2000}>
           <Input
+          
             onChangeText={(e) => setData({ ...data, email: e })}
             placeholder="votre-mail@gmail.com"
             label="E-mail"
@@ -100,7 +102,7 @@ export default function SignInEmail({ navigation }) {
         <Divider style={{ marginVertical: 15 }} />
 
         <TouchableOpacity
-          onPress={signInAction}
+          onPress={()=>signInAction()}
           style={disable ? styles.btnDisable : styles.btn}
           disabled={disable}
         >

@@ -77,6 +77,8 @@ export default function SignUp({ navigation }) {
             onChangeText={(e) => setUser({ ...User, username: e })}
           />
           <Input
+          keyboardType='email-address'
+          autoCapitalize='none'
             placeholder="votre-mail@gmail.com"
             label="E-mail"
             leftIcon={<Icon name="email" size={20} color={COLORS.primary} />}

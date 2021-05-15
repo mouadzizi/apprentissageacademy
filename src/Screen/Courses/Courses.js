@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState,useLayoutEffect } from 'react'
 import { View, Text, ActivityIndicator, StyleSheet,InteractionManager } from 'react-native'
 import { ListItem, Icon } from 'react-native-elements';
 import { st } from '../../API/firebase'
@@ -17,6 +17,16 @@ export default function Courses({ path,nav }) {
      })
   }, [])
 
+  useLayoutEffect(() => {
+    const title=path.split('/')[2]
+    console.log();
+    nav.setOptions({
+      title:title,
+    })
+    return () => {
+      
+    };
+  }, [nav])  
   const getCourses = async () => {
     const data = await st.ref().child(path).listAll()
     const courses = data.items.map(async f => {
