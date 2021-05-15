@@ -42,7 +42,6 @@ export default function SignInEmail({navigation}) {
       if (user != null) navigation.replace("Home");
     }).catch((err) => {
         setLoading(false);
-        alert(err.message);
         switch (err.code) {
           case "auth/invalid-email":
             setErrMes("Votre Email est inccorect");
