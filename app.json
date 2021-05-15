@@ -28,6 +28,9 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
+      "permissions": [
+        
+      ],
       "package": "com.us.apprentissageacademy",
       "versionCode": 1
     },
