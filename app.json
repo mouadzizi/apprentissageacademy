@@ -16,7 +16,9 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": ["**/*"],
+    "assetBundlePatterns": [
+      "**/*"
+    ],
     "ios": {
       "supportsTablet": true,
       "buildNumber": "1.0.0"
@@ -26,7 +28,9 @@
         "foregroundImage": "./assets/icon.png",
         "backgroundColor": "#FFFFFF"
       },
-      "permissions": ["WRITE_EXTERNAL_STORAGE"],
+      "permissions": [
+        "WRITE_EXTERNAL_STORAGE"
+      ],
       "package": "com.us.apprentissageacademy",
       "versionCode": 1
     },
